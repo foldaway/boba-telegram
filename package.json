@@ -1,11 +1,11 @@
 {
+  "scripts": {
+    "start": "app.js"
+  },
   "dependencies": {
     "geolib": "^2.0.24",
     "request": "^2.88.0",
     "telegraf": "^3.22.2"
   }
-}
 
-"scripts": {
-    "start": "app.js"
 }
