@@ -7,8 +7,6 @@ var request = require("request")
 
 var geoLib = require("geolib")
 
-const Telegraf = require('telegraf');
-
 const API_TOKEN = process.env.API_TOKEN || '620657925:AAH9wR8PRpeM8anERWSnr_QWdYXLf9deL84';
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL || 'https://boba-telegram.herokuapp.com';
