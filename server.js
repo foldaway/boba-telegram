@@ -7,7 +7,15 @@ var request = require("request")
 
 var geoLib = require("geolib")
 
-const bot = new Telegraf("620657925:AAH9wR8PRpeM8anERWSnr_QWdYXLf9deL84")
+const Telegraf = require('telegraf');
+
+const API_TOKEN = process.env.API_TOKEN || '620657925:AAH9wR8PRpeM8anERWSnr_QWdYXLf9deL84';
+const PORT = process.env.PORT || 3000;
+const URL = process.env.URL || 'https://boba-telegram.herokuapp.com';
+
+const bot = new Telegraf(API_TOKEN);
+bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
+bot.startWebhook(`/bot${API_TOKEN}`, null, PORT)
 
 var url = "https://bottleneckco.github.io/boba-scraper/data.json"
 var data;
