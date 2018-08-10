@@ -1,7 +1,4 @@
 {
-  "scripts": {
-    "start": "app.js"
-  },
   "dependencies": {
     "geolib": "^2.0.24",
     "request": "^2.88.0",
