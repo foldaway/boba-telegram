@@ -5,3 +5,7 @@
     "telegraf": "^3.22.2"
   }
 }
+
+"scripts": {
+    "start": "app.js"
+}
