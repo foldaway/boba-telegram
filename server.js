@@ -76,7 +76,8 @@ bot.on('location', (ctx) => {
 	}
 	ctx.reply(`Nearest Koi\n${nearestKoi.title}\n${nearestKoi.address}\n${nearestKoi.phone}\n${nearestKoi.distance}m`);
 	ctx.replyWithLocation(nearestKoi.latitude, nearestKoi.longitude);
-});
+	nearestKoi =  {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
+}); 
 
 bot.command('nearby', (ctx)=>{
 	return ctx.reply('Send your location.', Extra.markup((markup) => {
