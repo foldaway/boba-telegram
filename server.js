@@ -15,7 +15,7 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT)
 
-var url = "https://bottleneckco.github.io/boba-scraper/data.json"
+var url = "https://bottleneckco.github.io/sg-scraper/data.json"
 var data;
 request({
     url: url,
