@@ -41,6 +41,9 @@ bot.start((ctx)=>{
 
 bot.on('location', (ctx) => {
 	for (var i = 0; i < data.length; i++){
+		if(data[i].location == null){
+			i++;
+		}
 		var result = geoLib.getDistance(
 			{latitude: ctx.message.location.latitude, longitude: ctx.message.location.longitude},
 			{latitude: data[i].location.LATITUDE, longitude: data[i].location.LONGITUDE}
