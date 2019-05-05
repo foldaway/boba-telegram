@@ -84,8 +84,8 @@ koiScene.enter((ctx)=>{
 		ctx.reply(`Nearest Koi\n${nearestKoi.title}\n${nearestKoi.address}\n${nearestKoi.phone}\n${nearestKoi.distance}m`);
 		ctx.replyWithLocation(nearestKoi.latitude, nearestKoi.longitude);
 		nearestKoi =  {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
+		ctx.reply("Enter /start to search for another store");
 		ctx.scene.leave();
-		ctx.scene.enter('sendLocation');
 	} 
 	else{
 		ctx.reply(`No data`);
@@ -118,8 +118,8 @@ LiHoScene.enter((ctx)=>{
 		ctx.reply(`Nearest LiHo\n${nearestLiho.title}\n${nearestLiho.address}\n${nearestLiho.phone}\n${nearestLiho.distance}m`);
 		ctx.replyWithLocation(nearestLiho.latitude, nearestLiho.longitude);
 		nearestLiho =  {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
+		ctx.reply("Enter /start to search for another store");
 		ctx.scene.leave();
-		ctx.scene.enter('sendLocation');
 	} 
 	else{
 		ctx.reply(`No data`);
@@ -154,8 +154,8 @@ GongChaScene.enter((ctx)=>{
 		ctx.reply(`Nearest Gong Cha\n${nearestGongCha.title}\n${nearestGongCha.address}\n${nearestGongCha.distance}m`);
 		ctx.replyWithLocation(nearestGongCha.latitude, nearestGongCha.longitude);
 		nearestGongCha =  {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
+		ctx.reply("Enter /start to search for another store");
 		ctx.scene.leave();
-		ctx.scene.enter('sendLocation');
 	} 
 	else{
 		ctx.reply(`No data`);
