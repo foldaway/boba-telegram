@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Telegraf = require('telegraf');
 
 const Extra = require('telegraf/extra');
@@ -12,13 +13,19 @@ const request = require('request');
 
 const geoLib = require('geolib');
 
-const API_TOKEN = process.env.API_TOKEN || '620657925:AAH9wR8PRpeM8anERWSnr_QWdYXLf9deL84';
+const { API_TOKEN } = process.env;
 const PORT = process.env.PORT || 3000;
 const URL = process.env.URL || 'https://boba-telegram.herokuapp.com';
 
 const bot = new Telegraf(API_TOKEN);
-bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
-bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
+
+if (process.env.DYNO) {
+  // Running on Heroku
+  bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
+  bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
+} else {
+  bot.startPolling();
+}
 
 /**
  * @typedef OutletLocation
