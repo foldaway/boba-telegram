@@ -65,7 +65,7 @@ mainScene.on('location', (ctx) => {
   return ctx.reply('Select store.', Extra.markup(markup => markup.resize()
     .keyboard([
       ['Koi'],
-      ['LiHo'],
+      ['LiHO'],
       ['Gong Cha'],
     ])));
 });
