@@ -157,5 +157,3 @@ bot.on('location', (ctx) => {
 	}
 });
 */
-
-bot.startPolling();
