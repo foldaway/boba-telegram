@@ -20,6 +20,22 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT);
 
+/**
+ * @typedef OutletLocation
+ * @property {number} LATITUDE
+ * @property {number} LONGITUDE
+ */
+
+/**
+ * @typedef Outlet
+ * @property {string} chain
+ * @property {string} title
+ * @property {string} address
+ * @property {string} phone
+ * @property {string} distance
+ * @property {OutletLocation} location
+ */
+
 const url = 'https://bottleneckco.github.io/sg-scraper/boba.json';
 let data = 0;
 request({
@@ -27,7 +43,7 @@ request({
   json: true,
 }, (error, response, body) => {
   if (!error && response.statusCode === 200) {
-    	data = body;
+    data = body;
   }
 });
 let nearestLiho = {
@@ -51,9 +67,9 @@ sendLocation.on('location', (ctx) => {
   myLocation = ctx.message.location;
   return ctx.reply('Select store.', Extra.markup(markup => markup.resize()
     .keyboard([
-      	['Koi'],
-      	['LiHo'],
-      	['Gong Cha'],
+      ['Koi'],
+      ['LiHo'],
+      ['Gong Cha'],
     ])));
 });
 
