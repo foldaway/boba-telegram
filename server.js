@@ -78,16 +78,14 @@ mainScene.on('message', (ctx) => {
   /** @type {Array<Outlet>} */
   const nearestChains = data
     .filter(outlet => outlet.chain === ctx.update.message.text)
+    .map(outlet => Object.assign(outlet, {
+      distance: geoLib.getDistance(
+        ctx.scene.state.location,
+        { latitude: outlet.location.LATITUDE, longitude: outlet.location.LONGITUDE },
+      ),
+    }))
     .sort((a, b) => {
-      const aDist = geoLib.getDistance(
-        ctx.scene.state.location,
-        { latitude: a.location.LATITUDE, longitude: a.location.LONGITUDE },
-      );
-      const bDist = geoLib.getDistance(
-        ctx.scene.state.location,
-        { latitude: b.location.LATITUDE, longitude: b.location.LONGITUDE },
-      );
-      return aDist - bDist;
+      return a.distance - b.distance;
     });
   if (nearestChains.length === 0) {
     ctx.reply('No data');
