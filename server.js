@@ -15,12 +15,7 @@ const bot = new Telegraf(API_TOKEN);
 bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
 bot.startWebhook(`/bot${API_TOKEN}`, null, PORT)
 
-const session = require('telegraf/session');
-const Stage = require('telegraf/stage');
-const Scene = require('telegraf/scenes/base');
-
-
-var url = "https://bottleneckco.github.io/boba-scraper/data.json"
+var url = "https://bottleneckco.github.io/sg-scraper/data.json"
 var data;
 request({
     url: url,
@@ -31,14 +26,6 @@ request({
     	data = body;
     }
 })
-
-const OPTIONS = [
-	'Koi',
-	'LiHO',
-	'Gong Cha',
-	'Cancel'
-]
-
 var nearestLiho = {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
 var nearestKoi = {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
 var nearestGongCha = {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
@@ -53,12 +40,6 @@ bot.start((ctx)=>{
 })
 
 bot.on('location', (ctx) => {
-
-	const scene = new Scene('location');
-	return reply('Select a shop', Markup
-		.keyboard(OPTIONS)).oneTime().resize().extra();
-
-
 	for (var i = 0; i < data.length; i++){
 		var result = geoLib.getDistance(
 			{latitude: ctx.message.location.latitude, longitude: ctx.message.location.longitude},
@@ -98,5 +79,13 @@ bot.on('location', (ctx) => {
 	nearestKoi =  {title:"", address:"", phone:"", latitude: 0, longitude:0, distance:0};
 }); 
 
+bot.command('nearby', (ctx)=>{
+	return ctx.reply('Send your location.', Extra.markup((markup) => {
+    return markup.resize()
+      .keyboard([
+        markup.locationRequestButton('Send location')
+      ])
+  	}))
+})
 
 bot.startPolling()
