@@ -94,7 +94,7 @@ mainScene.on('message', (ctx) => {
   }
   ctx.reply(`Nearest ${ctx.update.message.text}\n${nearestChains[0].title}\n${nearestChains[0].address}\n${nearestChains[0].phone}\n${nearestChains[0].distance}m`);
   ctx.replyWithLocation(nearestChains[0].location.LATITUDE, nearestChains[0].location.LONGITUDE);
-  ctx.reply('Enter /start to search for another store');
+  ctx.reply('Enter /start to search for another store', Extra.markup((m) => m.removeKeyboard()));
   ctx.scene.leave();
 });
 
