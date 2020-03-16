@@ -64,7 +64,7 @@ mainScene.on('location', (ctx) => {
   ctx.scene.state.location = ctx.message.location;
   return ctx.reply('Select store.', Extra.markup(markup => markup.resize()
     .keyboard([
-      ['Koi'],
+      ['KOI'],
       ['LiHO'],
       ['Gong Cha'],
     ])));
@@ -88,7 +88,7 @@ mainScene.on('message', (ctx) => {
       return a.distance - b.distance;
     });
   if (nearestChains.length === 0) {
-    ctx.reply('No data');
+    ctx.reply('No data. Enter /start to search for another store');
     ctx.scene.leave();
     return;
   }
