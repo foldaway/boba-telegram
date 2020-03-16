@@ -88,8 +88,7 @@ mainScene.on('message', (ctx) => {
       return a.distance - b.distance;
     });
   if (nearestChains.length === 0) {
-    ctx.reply('No data. Enter /start to search for another store');
-    Markup.removeKeyboard(true);
+    ctx.reply('No data. Enter /start to search for another store', Extra.markup((m) => m.removeKeyboard()));
     ctx.scene.leave();
     return;
   }
